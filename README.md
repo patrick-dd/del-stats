@@ -10,3 +10,10 @@ needs to be done once.
 
 To download data, run `./get_data.sh`. This will take some minutes. 
 
+## Cleaning
+
+To clean the data, you'll need Python. The packages are in the `Pipfile`.
+After downloading the data and installing the packages, running
+
+`python cleaning/main.py` will do the job for you. Data will be stored in
+`/data`
