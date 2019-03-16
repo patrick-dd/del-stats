@@ -60,7 +60,7 @@ def get_date(events: Dict[Any, Any]) -> str:
 def get_base_headers(data_dir: str) -> Tuple[List[str], List[str]]:
 
     # GETTING HEADER
-    # HARD CODING. KNOW THAT GAME ID 944 HAS ALL COLUMNS
+    # HARD CODING. KNOW THAT GAME ID 1010 HAS ALL COLUMNS
     suffix: str = '1010.json' 
     game: Dict[Any, Any]  = json.load(open(data_dir + 'game_' + suffix, 'rb'))
  
@@ -74,7 +74,7 @@ def get_extra_headers(data_dir: str) -> Tuple[
         List[str], List[str], List[str], List[str]]:
 
     # GETTING HEADER
-    # HARD CODING. KNOW THAT GAME ID 944 HAS ALL COLUMNS
+    # HARD CODING. KNOW THAT GAME ID 1010 HAS ALL COLUMNS
     suffix: str = '1010.json' 
     game: Dict[Any, Any]  = json.load(open(data_dir + 'game_' + suffix, 'rb'))
     home_shots: Dict[Any, Any] = json.load(open(data_dir + 'home_' + suffix, 'rb'))
@@ -148,7 +148,7 @@ def drop_non_del_games(df: pd.DataFrame,
 
 if __name__=="__main__":
 
-    data_dir: str = '../../data/game_data/'
+    data_dir: str = '../data/game_data/'
     
     non_del_teams: List[str] = ['Kassel Huskies', 'Mikkelin Jukurit', 
                                 'EHC Kloten', 'HC Fribourg-Gottéron', 
@@ -175,11 +175,11 @@ if __name__=="__main__":
     header: List[str] = header_home_info + header_away_info 
     
     df_base: pd.DataFrame = pd.DataFrame(data=data, columns=header)
-    df_base.to_csv('../../data/base_game_data.csv')
+    df_base.to_csv('../data/base_game_data.csv')
 
     df_base_del: pd.DataFrame = drop_non_del_games(df_base, non_del_teams)
     
-    df_base_del.to_csv('../../data/base_del_game_data.csv')
+    df_base_del.to_csv('../data/base_del_game_data.csv')
 
     ################################################### 
     # EXTRA DATA
@@ -204,10 +204,10 @@ if __name__=="__main__":
     header_X: List[str] = header_home + header_away + ['date'] 
     
     df_full: pd.DataFrame = pd.DataFrame(data=data_extra, columns=header_X)
-    df_full.to_csv('../../data/complete_game_data.csv')
+    df_full.to_csv('../data/complete_game_data.csv')
 
     df: pd.DataFrame = drop_non_del_games(df_full, non_del_teams)
     
-    df.to_csv('../../data/game_data_del.csv')
+    df.to_csv('../data/game_data_del.csv')
 
 # EOF
